@@ -13,33 +13,33 @@ erDiagram
 
 package model {
 
-    class Cliente {
-        - Long idCliente
-        - String nomeCompleto
-        - LocalDate dataNascimento
-        - String endereco
-        - String telefone
+    class Client {
+        - String fullName
+        - LocalDate birthDate
+        - String address
+        - String phone
     }
 
-    class Equipamento {
-        - Long idEquipamento
-        - String tipo
-        - String serial
-        - Cliente dono
+    class Equipment {
+        - String type
+        - String serialCode
+        - Client owner
     }
 
-    class PedidoManutencao {
-        - Long idPedido
-        - BigDecimal valorTotal
-        - Map<String, BigDecimal> pecas
-        - List<Equipamento> equipamentos
+    class MaintenanceTicket {
+        - List<Item> repairs
+        - List<Item> parts
+        - List<Equipamento> equipment
     }
 
-    note right of PedidoManutencao::pecas
+    note right of MaintenanceTicket::parts
         O sistema não fará gestão de peças;
         Elas serão introduzidas como strings
         com valores monetários arbitrários
     end note
+
+    interface Item extends Map<String, BigDecimal> {
+    }
 
 }
 
