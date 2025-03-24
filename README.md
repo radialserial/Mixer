@@ -2,8 +2,8 @@
 
 ```mermaid
 erDiagram
-    CLIENTE ||--o{ EQUIPAMENTO : tem
-    "PEDIDO DE MANUTENCÃO" }o..o{ EQUIPAMENTO : tem
+    CLIENTE ||--|{ EQUIPAMENTO : tem
+    "PEDIDO DE MANUTENCÃO" }o..|{ EQUIPAMENTO : tem
 ```
 
 # Diagrama de classes
@@ -29,7 +29,7 @@ package model {
     class MaintenanceTicket {
         - List<Item> repairs
         - List<Item> parts
-        - List<Equipamento> equipment
+        - List<Equipment> equipmentList
     }
 
     note right of MaintenanceTicket::parts
@@ -40,6 +40,10 @@ package model {
 
     interface Item extends Map<String, BigDecimal> {
     }
+
+    MaintenanceTicket -- Item
+    MaintenanceTicket -- Equipment
+    Equipment -- Client
 
 }
 
