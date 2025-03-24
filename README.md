@@ -16,7 +16,7 @@ package model {
     class Cliente {
         - Long idCliente
         - String nomeCompleto
-        - String dataNascimento
+        - LocalDate dataNascimento
         - String endereco
         - String telefone
     }
