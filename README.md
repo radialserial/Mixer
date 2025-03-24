@@ -14,7 +14,7 @@ erDiagram
 package model {
 
     class Cliente {
-        - String idCliente
+        - Long idCliente
         - String nomeCompleto
         - String dataNascimento
         - String endereco
@@ -22,14 +22,14 @@ package model {
     }
 
     class Equipamento {
-        - String idEquipamento
+        - Long idEquipamento
         - String tipo
         - String serial
         - Cliente dono
     }
 
     class PedidoManutencao {
-        - String idPedido
+        - Long idPedido
         - BigDecimal valorTotal
         - Map<String, BigDecimal> pecas
         - List<Equipamento> equipamentos
