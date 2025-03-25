@@ -3,7 +3,7 @@
 ```mermaid
 erDiagram
     CLIENTE ||--|{ EQUIPAMENTO : tem
-    "PEDIDO DE MANUTENCÃO" }o..|{ EQUIPAMENTO : tem
+    "PEDIDO DE MANUTENCÃO" }o..|| EQUIPAMENTO : tem
 ```
 
 # Diagrama de classes
@@ -29,7 +29,7 @@ package model {
     class MaintenanceTicket {
         - List<Item> repairs
         - List<Item> parts
-        - List<Equipment> equipmentList
+        - Equipment equipment
     }
 
     note right of MaintenanceTicket::parts
