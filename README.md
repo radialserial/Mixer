@@ -2,8 +2,9 @@
 
 ```mermaid
 erDiagram
-    CLIENTE ||--o{ EQUIPAMENTO : tem
+    EQUIPAMENTO }o -- || DONO : tem
     "PEDIDO DE MANUTENCÃO" }o..|| EQUIPAMENTO : tem
+    "PEDIDO DE MANUTENCÃO" }o..o{ ITEM : tem
 ```
 
 # Diagrama de classes
@@ -13,7 +14,7 @@ erDiagram
 
 package model {
 
-    class Client {
+    class Owner {
         - String fullName
         - LocalDate birthDate
         - String address
@@ -23,27 +24,24 @@ package model {
     class Equipment {
         - String type
         - String serialCode
-        - Client owner
+        - Owner owner
     }
 
     class MaintenanceTicket {
         - List<Item> repairs
         - List<Item> parts
         - Equipment equipment
+        - Status status
     }
 
-    note right of MaintenanceTicket::parts
-        O sistema não fará gestão de peças;
-        Elas serão introduzidas como strings
-        com valores monetários arbitrários
-    end note
-
-    interface Item extends Map<String, BigDecimal> {
+    class Item {
+        - String description
+        - BigDecimal cost
     }
 
     MaintenanceTicket -- Item
     MaintenanceTicket -- Equipment
-    Equipment -- Client
+    Equipment -- Owner
 
 }
 
