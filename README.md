@@ -4,7 +4,7 @@
 erDiagram
     EQUIPAMENTO }o -- || DONO : tem
     "PEDIDO DE MANUTENCÃO" }o..|| EQUIPAMENTO : tem
-    "PEDIDO DE MANUTENCÃO" }o..o{ ITEM : tem
+    "PEDIDO DE MANUTENCÃO" }o..o{ "ITEM DE MANUTENÇÂO" : tem
 ```
 
 # Diagrama de classes
@@ -34,7 +34,7 @@ package model {
         - Status status
     }
 
-    class Item {
+    class MaintenanceItem {
         - String description
         - BigDecimal cost
     }
