@@ -2,7 +2,7 @@
 
 ```mermaid
 erDiagram
-    CLIENTE ||--|{ EQUIPAMENTO : tem
+    CLIENTE ||--o{ EQUIPAMENTO : tem
     "PEDIDO DE MANUTENCÃO" }o..|| EQUIPAMENTO : tem
 ```
 
