@@ -4,7 +4,8 @@
 erDiagram
     EQUIPAMENTO }o -- || DONO : tem
     "PEDIDO DE MANUTENCÃO" }o..|| EQUIPAMENTO : tem
-    "PEDIDO DE MANUTENCÃO" }o..o{ "ITEM DE MANUTENÇÂO" : tem
+    "PEDIDO DE MANUTENCÃO" }o..o{ "REPAROS" : tem
+    "PEDIDO DE MANUTENCÃO" }o..o{ "PARTES" : tem
 ```
 
 # Diagrama de classes
@@ -28,18 +29,23 @@ package model {
     }
 
     class MaintenanceTicket {
-        - List<Item> repairs
-        - List<Item> parts
+        - List<Repair> repairs
+        - List<Part> parts
         - Equipment equipment
         - Status status
     }
 
-    class MaintenanceItem {
+    abstract class MaintenanceItem {
         - String description
         - BigDecimal cost
     }
 
-    MaintenanceTicket -- Item
+    class Part extends MaintenanceItem { }
+
+    class Repair extends MaintenanceItem { }
+
+    MaintenanceTicket -- Part
+    MaintenanceTicket -- Repair
     MaintenanceTicket -- Equipment
     Equipment -- Owner
 
