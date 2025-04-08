@@ -21,7 +21,6 @@ package model {
 
     class Owner {
         - String fullName
-        - LocalDate birthDate
         - String address
         - String phone
     }
