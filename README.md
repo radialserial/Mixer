@@ -1,4 +1,8 @@
-# Diagrama entidade-relacionamento
+## Descrição
+
+Esse repositório contém uma API para um sistema de gestão de pedidos de manutenção de equipamentos pesados.
+
+## Diagrama entidade-relacionamento
 
 ```mermaid
 erDiagram
@@ -8,7 +12,7 @@ erDiagram
     "PEDIDO DE MANUTENCÃO" }o..o{ "PARTES" : tem
 ```
 
-# Diagrama de classes
+## Diagrama de classes
 
 ```plantuml
 @startuml
