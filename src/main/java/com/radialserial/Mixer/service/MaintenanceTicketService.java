@@ -6,5 +6,5 @@ public interface MaintenanceTicketService {
 
     MaintenanceTicket findById(Long id);
 
-    MaintenanceTicket create(MaintenanceTicket maintenanceTicket) throws Exception;
+    MaintenanceTicket create(MaintenanceTicket maintenanceTicket);
 }

@@ -24,7 +24,7 @@ public class MaintenanceTicketServiceImpl implements MaintenanceTicketService {
     }
 
     @Override
-    public MaintenanceTicket create(MaintenanceTicket maintenanceTicket) throws Exception {
+    public MaintenanceTicket create(MaintenanceTicket maintenanceTicket) {
         return this.maintenanceTicketRepository.save(maintenanceTicket);
     }
 }

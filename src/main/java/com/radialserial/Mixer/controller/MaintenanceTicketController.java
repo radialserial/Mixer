@@ -8,14 +8,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.NoSuchElementException;
 
 @Slf4j
 @Tag(name = "Maintenance ticket controller", description = "Management for maintenance tickets for heavy equipment.")
@@ -43,14 +40,7 @@ public class MaintenanceTicketController {
             @PathVariable
             Long id
     ) {
-        MaintenanceTicket maintenanceTicket = null;
-
-        try {
-            maintenanceTicket = maintenanceTicketService.findById(id);
-        } catch (NoSuchElementException e) {
-            return ResponseEntity.notFound().build();
-        }
-
+        MaintenanceTicket maintenanceTicket = maintenanceTicketService.findById(id);
         return ResponseEntity.ok(maintenanceTicket);
     }
 
@@ -64,15 +54,7 @@ public class MaintenanceTicketController {
     )
     @PostMapping
     public ResponseEntity<MaintenanceTicket> create(@RequestBody MaintenanceTicket maintenanceTicket) {
-        MaintenanceTicket createdTicket = null;
-
-        try {
-            createdTicket = maintenanceTicketService.create(maintenanceTicket);
-        } catch (HttpMessageNotReadableException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().build();
-        }
+        MaintenanceTicket createdTicket = maintenanceTicketService.create(maintenanceTicket);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
